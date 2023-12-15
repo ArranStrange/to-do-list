@@ -5,14 +5,14 @@ import { ITask } from "./Components/interfaces";
 
 const App: FC = () => {
   const [task, setTask] = useState<string>("");
-  const [deadline, setDealine] = useState<string>("");
+  const [deadline, setDeadline] = useState<string>("");
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "task") {
       setTask(event.target.value);
     } else {
-      setDealine(String(event.target.value));
+      setDeadline(String(event.target.value));
     }
   };
 
@@ -20,13 +20,13 @@ const App: FC = () => {
     const newTask = { taskName: task, deadline: deadline };
     setTodoList([...todoList, newTask]);
     setTask("");
-    setDealine("");
+    setDeadline("");
   };
 
   const completeTask = (taskNameToDelete: string): void => {
     setTodoList(
       todoList.filter((task) => {
-        return task.taskName != taskNameToDelete;
+        return task.taskName !== taskNameToDelete;
       })
     );
   };
@@ -34,11 +34,17 @@ const App: FC = () => {
   return (
     <div className="App">
       <div className="header">
+        <img
+          className="header-image"
+          src="https://www.pngall.com/wp-content/uploads/9/Green-Tick-Vector-PNG-Free-Image.png"
+          alt="Green Tick"
+        />
         <div className="inputContainer">
           <input
             type="text"
             placeholder="Task..."
             name="task"
+            maxLength={50}
             value={task}
             onChange={handleChange}
           />
@@ -49,8 +55,8 @@ const App: FC = () => {
             value={deadline}
             onChange={handleChange}
           />
+          <button onClick={addTask}>Add</button>
         </div>
-        <button onClick={addTask}>Add Task</button>
       </div>
       <div className="todoList">
         {todoList.map((task: ITask, key: number) => {
