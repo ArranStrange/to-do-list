@@ -11,6 +11,7 @@ const TodoTask = ({ task, completeTask }: Props) => {
     <div className="task">
       <div className="content">
         <span>{task.taskName}</span>
+        <span>{task.taskDate}</span>
         <span>{task.deadline}</span>
         <button
           onClick={() => {
