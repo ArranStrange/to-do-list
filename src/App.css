@@ -82,12 +82,13 @@
   height: 100%;
   border: none;
   background-color: rgb(48, 44, 44);
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   color: white;
   cursor: pointer;
 }
 
 .header-image {
-  width: 150px;
+  width: 100px;
+  padding-top: 20px;
 }

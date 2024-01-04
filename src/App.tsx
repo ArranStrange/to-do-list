@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent, useState } from "react";
+import React, { FC, ChangeEvent, useState, useEffect } from "react";
 import "./App.css";
 import TodoTask from "./Components/todo-task";
 import { ITask } from "./Components/interfaces";
@@ -6,7 +6,13 @@ import { ITask } from "./Components/interfaces";
 const App: FC = () => {
   const [task, setTask] = useState<string>("");
   const [deadline, setDeadline] = useState<string>("");
+  const [setDate, setSetDate] = useState<string>("");
   const [todoList, setTodoList] = useState<ITask[]>([]);
+
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    setDeadline(today);
+  });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "task") {
@@ -50,7 +56,6 @@ const App: FC = () => {
           />
           <input
             type="date"
-            placeholder="Deadline (in Days)..."
             name="deadline"
             value={deadline}
             onChange={handleChange}
