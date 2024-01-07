@@ -41,7 +41,7 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <div className="header column1">
+      <div className="header">
         <img
           className="header-image"
           src="https://www.pngall.com/wp-content/uploads/9/Green-Tick-Vector-PNG-Free-Image.png"
@@ -73,7 +73,7 @@ const App: FC = () => {
           <button onClick={addTask}>Add</button>
         </div>
       </div>
-      <div className="todoList column2">
+      <div className="todoList">
         {todoList
           .slice()
           .reverse()
